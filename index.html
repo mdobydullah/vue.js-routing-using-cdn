@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Vue.js Routing From Scratch Using Vue Router CDN</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+	<script src="https://cdn.jsdelivr.net/npm/vue"></script>
+	<script src="https://unpkg.com/vue-router"></script>
+</head>
+<body>
+
+<div id="app" class="container" style="margin-top: 50px;">
+
+	<nav class="navbar navbar-expand-lg navbar-light" style="background-color: #e3f2fd;">
+	  <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
+	    <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+			<li> <router-link class="nav-link" to="/"> Home </router-link> </li>
+			<li> <router-link class="nav-link" to="about"> About </router-link> </li>
+			<li> <router-link class="nav-link" to="contact"> Contact </router-link> </li>
+	    </ul>
+	  </div>
+	</nav>
+
+	<div class="text-center" style="margin-top: 20px;">
+		<router-view></router-view>
+	</div>
+</div>
+
+<!-- Vue Pages -->
+<script src="pages/home.vue.js"></script>
+<script src="pages/about.vue.js"></script>
+<script src="pages/contact.vue.js"></script>
+
+<script>
+var routes = [
+  { path: '/', component: Home },
+  { path: '/about', component: About },
+  { path: '/contact', component: Contact }
+];
+
+var router = new VueRouter({
+  routes: routes,
+  mode: 'history',
+  base: '/'
+});
+
+var app = new Vue({
+	el: '#app',
+  	router: router
+})
+</script>
+
+</body>
+</html>
